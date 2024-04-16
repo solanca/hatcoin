@@ -1,7 +1,7 @@
 import { Dialog, ThemeProvider } from "@mui/material";
 import "./App.css";
 import MainSection from "./sections/main";
-import { useState } from "react";
+// import { useState } from "react";
 import WelcomePopup from "./components/welcome-popup";
 import WelcomeGif from "./assets/gif/welcome.gif";
 import Header from "./components/header";
@@ -13,7 +13,7 @@ import Tokenomics from "./sections/tokenomics";
 import Disclaimer from "./sections/disclaimer";
 
 function App() {
-  const [open, setOpen] = useState<boolean>(true);
+  // const [open, setOpen] = useState<boolean>(true);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -26,8 +26,8 @@ function App() {
         {/* <PetCounter /> */}
         <Footer />
         <Dialog
-          open={open}
-          onClose={() => setOpen(false)}
+          open={false}
+          // onClose={() => setOpen(false)}
           fullWidth
           maxWidth="sm"
           PaperProps={{
