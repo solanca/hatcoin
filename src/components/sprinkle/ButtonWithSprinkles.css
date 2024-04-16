@@ -1,0 +1,63 @@
+/* ButtonWithSprinkles.css */
+.button {
+  position: relative;
+  overflow: hidden; /* Keep all effects contained within the button boundaries */
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button.active {
+  background-color: #8c47fb; /* Change color when active to give feedback */
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: sprinkle-animation 1s linear forwards;
+}
+
+@keyframes sprinkle-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(30);
+    opacity: 0;
+  }
+}
+
+.button.active::before {
+  animation: explode 0.7s ease-out forwards;
+}
+
+@keyframes explode {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(10);
+    opacity: 0;
+  }
+}
+
+/* Additional particles */
+@for $i from 1 through 10 {
+  .button.active::nth-child(#{$i}) {
+    animation-delay: #{0.1 * $i}s;
+    animation-duration: 0.5s + #{0.05 * $i}s;
+  }
+}

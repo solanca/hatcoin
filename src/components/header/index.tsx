@@ -6,7 +6,13 @@ type Props = {};
 
 const Header = (_props: Props) => {
   return (
-    <AppBar sx={{ background: "transparent", boxShadow: "none", px: 10 }}>
+    <AppBar
+      sx={{
+        background: "transparent",
+        boxShadow: "none",
+        px: { md: 10, sm: 6 },
+      }}
+    >
       <Toolbar>
         <img src={logo} alt="logo" width={50} style={{ borderRadius: "50%" }} />
         <Typography ml={4}>$Hat</Typography>

@@ -1,4 +1,4 @@
-import { Card } from "@mui/material";
+import { Box, Card, CardActions, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 // Importing all pet images
@@ -23,8 +23,13 @@ import Pet8Icon from "../../assets/img/pet8.webp";
 import Pet9Icon from "../../assets/img/pet9.webp";
 import Pet10Icon from "../../assets/img/pet10.webp";
 import Firework from "../../components/firework";
+import { motion } from "framer-motion";
 
 type Props = {};
+interface PetStats {
+  totalPets: number;
+  totalUsers: Set<string>;
+}
 
 const MainSection = (_props: Props) => {
   const pets = [
@@ -42,8 +47,22 @@ const MainSection = (_props: Props) => {
   const [currentPet, setCurrentPet] = useState<string>(pets[0][0]);
   const [currentPetIcon, setCurrentPetIcon] = useState<string>(pets[0][1]);
   const [showFireworks, setShowFireworks] = useState<boolean>(false);
-
+  const [petStats, setPetStats] = useState<PetStats>({
+    totalPets: 0,
+    totalUsers: new Set(),
+  });
+  const [isVibrating, setIsVibrating] = useState(false);
   const handlePetClick = () => {
+    setIsVibrating(true);
+    // handlePetClick(); // Your existing click handler
+
+    // Reset the animation
+    setPetStats((prevStats) => {
+      const newStats = { ...prevStats };
+      newStats.totalPets++;
+      newStats.totalUsers.add("user1"); // Simulating a user ID, replace with real user tracking logic
+      return newStats;
+    });
     const randomIndex = Math.floor(Math.random() * pets.length);
     setCurrentPet(pets[randomIndex][0]);
     setCurrentPetIcon(pets[randomIndex][1]);
@@ -51,49 +70,97 @@ const MainSection = (_props: Props) => {
     setTimeout(() => {
       setShowFireworks(false);
     }, 1000); // Fireworks will show for 1 second
+    setTimeout(() => {
+      setIsVibrating(false);
+    }, 800); // Reset after the animation duration
+  };
+
+  const vibrationEffect = {
+    scale: [1, 0.9, 1.1, 1], // Quickly change scale to simulate a shake
+    rotate: [0, -2, 2, 0], // Slight rotations
+    transition: {
+      duration: 0.2, // Short duration for a quick shake
+      repeat: 2, // Repeat the sequence for a continuous effect
+      repeatType: "reverse", // Reverse the animation each cycle
+    },
   };
 
   return (
     <div className="main-section">
       <Card
-        sx={{ borderRadius: "50%", cursor: "pointer" }}
-        onClick={handlePetClick}
+        sx={{
+          p: 4,
+          borderRadius: 4,
+          background: "transparent",
+          boxShadow: "none",
+        }}
       >
-        <img src={currentPet} alt="Pet" width={300} height={300} />
+        {/* <ButtonWithSprinkles /> */}
+        <Box>
+          <motion.img
+            // whileTap={vibrationEffect}
+            animate={isVibrating ? (vibrationEffect as any) : {}}
+            onClick={handlePetClick}
+            src={currentPet}
+            style={{
+              borderRadius: "50%",
+              cursor: "pointer",
+              background:
+                "linear-gradient(90deg, rgba(145,78,249,1) 0%, rgba(80,163,197,1) 53%, rgba(21,240,148,1) 100%)",
+            }}
+            alt="Pet"
+            width={300}
+            height={300}
+          />
+        </Box>
         {showFireworks && (
           <>
             <Firework
               pet={currentPetIcon}
-              startX={100}
+              startX={300}
               startY={-300}
               color="red"
             />
             <Firework
               pet={currentPetIcon}
-              startX={50}
+              startX={350}
               startY={-200}
               color="green"
             />
             <Firework
               pet={currentPetIcon}
-              startX={160}
+              startX={260}
               startY={-100}
               color="white"
             />
             <Firework
               pet={currentPetIcon}
-              startX={200}
+              startX={370}
               startY={-350}
               color="blue"
             />
             <Firework
               pet={currentPetIcon}
-              startX={150}
+              startX={450}
               startY={-320}
               color="yellow"
             />
           </>
         )}
+        <CardActions>
+          <Grid container flexDirection={"column"}>
+            <Typography color={"azure"} variant="h3">
+              Total Pets: {petStats.totalPets}
+            </Typography>
+            <Typography variant="h3" color={"azure"}>
+              Average Pets Per User:{" "}
+              {(petStats.totalPets / petStats.totalUsers.size).toFixed(2)}
+            </Typography>
+            <Typography color={"azure"} variant="h5">
+              Top Petter: @skips
+            </Typography>
+          </Grid>
+        </CardActions>
       </Card>
     </div>
   );
