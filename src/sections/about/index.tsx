@@ -1,4 +1,3 @@
-import React from "react";
 import SectionTemplate from "../../components/section-template";
 import { Box, Typography } from "@mui/material";
 

@@ -5,18 +5,16 @@ import {
   CardContent,
   Grid,
   Typography,
-  styled,
 } from "@mui/material";
-import WelcomeGif from "../../assets/gif/welcome.gif";
 type Props = {};
-const Root = styled(Box)(() => ({
-  position: "relative",
-  display: "flex",
-  //   justifyContent: "center",
-  flexDirection: "column",
-  alignItems: "center",
-  height: 400,
-}));
+// const Root = styled(Box)(() => ({
+//   position: "relative",
+//   display: "flex",
+//   //   justifyContent: "center",
+//   flexDirection: "column",
+//   alignItems: "center",
+//   height: 400,
+// }));
 const WelcomePopup = (_props: Props) => {
   return (
     <>

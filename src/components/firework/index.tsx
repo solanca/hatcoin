@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import React from "react";
-import Pet1 from "../../assets/img/pet1.png";
 type FireworkProps = {
   startX: number;
   startY: number;
