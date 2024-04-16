@@ -8,7 +8,7 @@ const Tokenomics = (_props: Props) => {
   return (
     <SectionTemplate position={true}>
       <Box sx={{ height: 300 }}>
-        <Typography variant="h4">How to buy / CA</Typography>
+        <Typography variant="h4">Tokenomics</Typography>
         <img src={Pet4} width={200} alt="pet4" />
       </Box>
     </SectionTemplate>
