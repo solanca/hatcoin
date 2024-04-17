@@ -1,6 +1,5 @@
 import {
   Box,
-  ButtonBase,
   Card,
   CardActions,
   Grid,
@@ -30,8 +29,7 @@ import Pet7Icon from "../../assets/img/pet7.webp";
 import Pet8Icon from "../../assets/img/pet8.webp";
 import Pet9Icon from "../../assets/img/pet9.webp";
 import Pet10Icon from "../../assets/img/pet10.webp";
-import Firework from "../../components/firework";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 import ButtonBackground from "../../assets/button.webp";
 import SnowEffect from "../../components/showflake/SnowEffect";
 
