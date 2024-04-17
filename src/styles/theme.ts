@@ -7,6 +7,7 @@ export const theme = createTheme({
     },
     h5: {
       fontWeight: 700,
+      color: "azure",
     },
     h4: {
       fontWeight: 700,
