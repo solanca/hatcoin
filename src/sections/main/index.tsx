@@ -33,6 +33,7 @@ import Pet10Icon from "../../assets/img/pet10.webp";
 import Firework from "../../components/firework";
 import { motion, transform } from "framer-motion";
 import ButtonBackground from "../../assets/button.webp";
+import SnowEffect from "../../components/showflake/SnowEffect";
 
 type Props = {};
 interface PetStats {
@@ -104,7 +105,7 @@ const MainSection = (_props: Props) => {
     setShowFireworks(true);
     setTimeout(() => {
       setShowFireworks(false);
-    }, 1000); // Fireworks will show for 1 second
+    }, 2000); // Fireworks will show for 1 second
     setTimeout(() => {
       setIsVibrating(false);
     }, 800); // Reset after the animation duration
@@ -122,6 +123,8 @@ const MainSection = (_props: Props) => {
 
   return (
     <div className="main-section">
+      {showFireworks && <SnowEffect pet={currentPetIcon} />}
+
       <Card
         sx={{
           p: 4,
@@ -156,7 +159,7 @@ const MainSection = (_props: Props) => {
             <Typography variant="h5">Pet</Typography>
           </PetButton>
         </Grid>
-        {showFireworks && (
+        {/* {showFireworks && (
           <>
             <Firework
               pet={currentPetIcon}
@@ -189,7 +192,7 @@ const MainSection = (_props: Props) => {
               color="yellow"
             />
           </>
-        )}
+        )} */}
         <CardActions>
           <Grid container flexDirection={"column"}>
             <Typography color={"azure"} variant="h3">
@@ -205,6 +208,7 @@ const MainSection = (_props: Props) => {
           </Grid>
         </CardActions>
       </Card>
+      {/* <SnowEffect /> */}
     </div>
   );
 };
