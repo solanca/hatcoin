@@ -15,4 +15,13 @@ export const theme = createTheme({
     },
     body1: { fontWeight: 700, color: "azure" },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 760,
+      md: 1300,
+      lg: 1536,
+      xl: 1918,
+    },
+  },
 });
