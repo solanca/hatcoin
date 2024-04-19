@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     setInterval(() => {
       setLoading(false);
-    }, 3000);
+    }, 5000);
   }, []);
   return (
     <ThemeProvider theme={theme}>
