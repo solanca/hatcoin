@@ -16,7 +16,7 @@ const Header = (_props: Props) => {
         right: { md: 40, sm: 10, xs: 4 },
       }}
     >
-      <img src={Logo} alt="logo" width={50} />
+      <img src={Logo} alt="logo" width={50} style={{ borderRadius: "50%" }} />
       <Typography
         variant="h4"
         ml={2}

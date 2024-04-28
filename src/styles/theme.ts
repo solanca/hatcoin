@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   typography: {
+    fontFamily: "Hat",
     h3: {
       fontWeight: 800,
     },

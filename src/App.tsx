@@ -7,11 +7,11 @@ import WelcomeGif from "./assets/gif/welcome.gif";
 import Footer from "./sections/footer";
 import { theme } from "./styles/theme";
 import About from "./sections/about";
-import HowToBuy from "./sections/how-to-buy";
 import Tokenomics from "./sections/tokenomics";
 import Disclaimer from "./sections/disclaimer";
 import { useEffect, useState } from "react";
 import Loading from "./components/LoadingBar";
+import AnimateDivider from "./components/animate-divider/AnimateDivider";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,8 +30,9 @@ function App() {
         >
           <Container maxWidth="xl" sx={{ px: "0px !important" }}>
             <MainSection />
+            <AnimateDivider />
             <About />
-            <HowToBuy />
+            {/* <HowToBuy /> */}
             <Tokenomics />
             <Disclaimer />
             {/* <PetCounter /> */}

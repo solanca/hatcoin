@@ -8,7 +8,7 @@ type Props = {
 
 const cardVariants = (position: boolean) => ({
   offscreen: {
-    x: position ? 600 : -600,
+    x: position ? 300 : -300,
     opacity: 0,
   },
   onscreen: {
@@ -27,13 +27,13 @@ const SectionTemplate = ({ children, position }: Props) => {
     <motion.div
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: false, amount: 0.1 }}
     >
       <motion.div
         variants={cardVariants(position)}
         style={{ overflowY: "hidden" }}
       >
-        {children}
+        <>{children}</>
       </motion.div>
     </motion.div>
   );
