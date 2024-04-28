@@ -1,4 +1,11 @@
-import { Box, Card, CardActions, Grid, Typography } from "@mui/material";
+import {
+  // Box,
+  Card,
+  CardActions,
+  Grid,
+  Typography,
+  // styled,
+} from "@mui/material";
 import { useState } from "react";
 
 // Importing all pet images
@@ -22,14 +29,42 @@ import Pet7Icon from "../../assets/img/pet7.webp";
 import Pet8Icon from "../../assets/img/pet8.webp";
 import Pet9Icon from "../../assets/img/pet9.webp";
 import Pet10Icon from "../../assets/img/pet10.webp";
-import Firework from "../../components/firework";
 import { motion } from "framer-motion";
+// import ButtonBackground from "../../assets/button.webp";
+import SnowEffect from "../../components/showflake/SnowEffect";
+import Header from "../../components/header";
 
 type Props = {};
 interface PetStats {
   totalPets: number;
   totalUsers: Set<string>;
 }
+
+// const PetButton = styled(Box)(() => ({
+//   background: `url(${ButtonBackground})`,
+//   backgroundSize: "contain",
+//   backgroundRepeat: "no-repeat",
+//   width: 110,
+//   height: 50,
+//   marginTop: 8,
+//   display: "flex",
+//   alignItems: "center",
+//   justifyContent: "center",
+//   cursor: "pointer",
+//   ":hover": {
+//     transform: "scale(1.1)",
+//   },
+//   ":active": {
+//     animation: "vibrate 0.1s linear infinite",
+//   },
+//   "@keyframes vibrate": {
+//     "0%": { transform: "translate(0)" },
+//     "25%": { transform: "translate(-2px, 2px)" },
+//     "50%": { transform: "translate(0)" },
+//     "75%": { transform: "translate(2px, -2px)" },
+//     "100%": { transform: "translate(0)" },
+//   },
+// }));
 
 const MainSection = (_props: Props) => {
   const pets = [
@@ -69,7 +104,7 @@ const MainSection = (_props: Props) => {
     setShowFireworks(true);
     setTimeout(() => {
       setShowFireworks(false);
-    }, 1000); // Fireworks will show for 1 second
+    }, 2000); // Fireworks will show for 1 second
     setTimeout(() => {
       setIsVibrating(false);
     }, 800); // Reset after the animation duration
@@ -80,13 +115,15 @@ const MainSection = (_props: Props) => {
     rotate: [0, -2, 2, 0], // Slight rotations
     transition: {
       duration: 0.2, // Short duration for a quick shake
-      repeat: 2, // Repeat the sequence for a continuous effect
+      repeat: 1, // Repeat the sequence for a continuous effect
       repeatType: "reverse", // Reverse the animation each cycle
     },
   };
 
   return (
     <div className="main-section">
+      {showFireworks && <SnowEffect pet={currentPetIcon} />}
+      <Header />
       <Card
         sx={{
           p: 4,
@@ -96,11 +133,17 @@ const MainSection = (_props: Props) => {
         }}
       >
         {/* <ButtonWithSprinkles /> */}
-        <Box>
+        <Grid
+          container
+          justifyContent={"center"}
+          alignItems={"center"}
+          flexDirection={"column"}
+        >
           <motion.img
             // whileTap={vibrationEffect}
             animate={isVibrating ? (vibrationEffect as any) : {}}
             onClick={handlePetClick}
+            whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
             src={currentPet}
             style={{
               borderRadius: "50%",
@@ -112,18 +155,21 @@ const MainSection = (_props: Props) => {
             width={300}
             height={300}
           />
-        </Box>
-        {showFireworks && (
+          {/* <PetButton onClick={handlePetClick}>
+            <Typography variant="h5">Pet</Typography>
+          </PetButton> */}
+        </Grid>
+        {/* {showFireworks && (
           <>
             <Firework
               pet={currentPetIcon}
-              startX={300}
+              startX={-200}
               startY={-300}
               color="red"
             />
             <Firework
               pet={currentPetIcon}
-              startX={350}
+              startX={150}
               startY={-200}
               color="green"
             />
@@ -135,18 +181,18 @@ const MainSection = (_props: Props) => {
             />
             <Firework
               pet={currentPetIcon}
-              startX={370}
+              startX={470}
               startY={-350}
               color="blue"
             />
             <Firework
               pet={currentPetIcon}
-              startX={450}
+              startX={750}
               startY={-320}
               color="yellow"
             />
           </>
-        )}
+        )} */}
         <CardActions>
           <Grid container flexDirection={"column"}>
             <Typography color={"azure"} variant="h3">
@@ -162,6 +208,7 @@ const MainSection = (_props: Props) => {
           </Grid>
         </CardActions>
       </Card>
+      {/* <SnowEffect /> */}
     </div>
   );
 };

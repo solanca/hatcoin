@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hat</title>
   </head>
+  <style>
+    @font-face {
+      font-family: "Hat";
+      src: url("hat.woff2") format("truetype");
+      /* Add additional src lines for different font file formats if needed */
+    }
+
+    body {
+      font-family: "Hat", sans-serif; /* Use the custom font */
+    }
+  </style>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
