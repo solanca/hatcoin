@@ -17,7 +17,7 @@ const Tokenomics = (_props: Props) => {
             </Typography>
           </div>
         </Grid>
-        <Grid container my={4} alignItems={"center"}>
+        <Grid container my={4} alignItems={"center"} spacing={4}>
           <Grid item md={6} sm={12}>
             <Grid container justifyContent={"center"}>
               <Card sx={{ background: "transparent", boxShadow: "none" }}>
