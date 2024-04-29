@@ -1,4 +1,4 @@
-import { Box, CardContent, Grid, TextField, Typography } from "@mui/material";
+import { Box, CardContent, Grid, Typography } from "@mui/material";
 // import { PetButton } from "../styled-buttton/StyledBtn";
 import { styled } from "@mui/material";
 import BackBtn from "../../assets/button.webp";
@@ -54,7 +54,7 @@ const WelcomePopup = ({ username, handleUserName, handleSubmit }: Props) => {
           Welcome to $HAT from $WFH
         </Typography>
       </Grid>
-      <CardContent sx={{ height: 100 }}>
+      <CardContent sx={{ height: { md: 200, sm: 200, xs: 250 } }}>
         <Grid
           container
           justifyContent={"center"}
@@ -63,32 +63,73 @@ const WelcomePopup = ({ username, handleUserName, handleSubmit }: Props) => {
         >
           <Typography>fewjflkdsjalkjlsakdjgkljglskoweijfkadj</Typography>
         </Grid>
-      </CardContent>
-      {/* </Root> */}
-      {/* <CardActions> */}
-      <Grid container justifyContent={"center"}>
-        <TextField
-          value={username}
-          onChange={(e: any) => handleUserName(e.target.value)}
-        />
-      </Grid>
-      <Grid
-        container
-        alignItems={"center"}
-        justifyContent={"center"}
-        columnGap={4}
-        // mb={30}
-        // flexDirection={"column"}
-      >
-        {/* <Box> */}
-        <PetButton onClick={handleSubmit}>ENTER</PetButton>
-        <PetButton>BUY</PetButton>
-        {/* <Button variant="contained">ENTER</Button>
+        <Box sx={{ display: { md: "none", sm: "none", xs: "block" } }}>
+          <Grid container justifyContent={"center"} alignItems={"center"}>
+            <Typography mr={2}>Username</Typography>
+
+            <input
+              className="username"
+              aria-label="username"
+              style={{ zIndex: 1000 }}
+              value={username}
+              onChange={(e: any) => handleUserName(e.target.value)}
+            />
+
+            {/* </FormControlLabel> */}
+          </Grid>
+          <Grid
+            container
+            alignItems={"center"}
+            justifyContent={"center"}
+            columnGap={4}
+            // mb={30}
+            // flexDirection={"column"}
+          >
+            {/* <Box> */}
+            <PetButton onClick={handleSubmit}>ENTER</PetButton>
+            <PetButton>BUY</PetButton>
+            {/* <Button variant="contained">ENTER</Button>
             <Button variant="contained" color="info">
               BUY
             </Button> */}
-        {/* </Box> */}
-      </Grid>
+            {/* </Box> */}
+          </Grid>
+        </Box>
+      </CardContent>
+      <Box sx={{ display: { md: "block", sm: "block", xs: "none" } }}>
+        <Grid container justifyContent={"center"} alignItems={"center"}>
+          <Typography mr={2}>Username</Typography>
+
+          <input
+            className="username"
+            aria-label="username"
+            style={{ zIndex: 1000 }}
+            value={username}
+            onChange={(e: any) => handleUserName(e.target.value)}
+          />
+
+          {/* </FormControlLabel> */}
+        </Grid>
+        <Grid
+          container
+          alignItems={"center"}
+          justifyContent={"center"}
+          columnGap={4}
+          // mb={30}
+          // flexDirection={"column"}
+        >
+          {/* <Box> */}
+          <PetButton onClick={handleSubmit}>ENTER</PetButton>
+          <PetButton>BUY</PetButton>
+          {/* <Button variant="contained">ENTER</Button>
+            <Button variant="contained" color="info">
+              BUY
+            </Button> */}
+          {/* </Box> */}
+        </Grid>
+      </Box>
+      {/* </Root> */}
+      {/* <CardActions> */}
       {/* </CardActions> */}
     </>
   );
