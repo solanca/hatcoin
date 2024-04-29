@@ -11,14 +11,14 @@ const About = (_props: Props) => {
         <Box
           sx={{
             height: 400,
-            p: 6,
+            py: 6,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
           {/* <Typography variant="h4">About</Typography> */}
-          <img src={About1} alt="about" width={400} />
+          <img src={About1} alt="about" width={300} />
           <img src={Pet1} width={200} alt="pet1" />
         </Box>
       </SectionTemplate>

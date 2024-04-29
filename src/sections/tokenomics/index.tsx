@@ -1,61 +1,44 @@
 import SectionTemplate from "../../components/section-template";
-import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
-import diagram from "../../assets/diagram.svg";
+import {
+  Grid,
+  Typography,
+  // useMediaQuery,
+  // useTheme,
+} from "@mui/material";
 import Pet8 from "../../assets/img/pet8.png";
-import copy from "../../assets/copy.svg";
+import Pet4 from "../../assets/img/pet2.png";
+import Pet5 from "../../assets/img/pet5.png";
+import Pet6 from "../../assets/img/pet6.png";
+import TokenCard from "./TokenCard";
 type Props = {};
 
 const Tokenomics = (_props: Props) => {
+  // const theme = useTheme();
+  // const _isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
 
     <>
       <SectionTemplate position={true}>
         <Typography variant="h4">TOKENOMICS</Typography>
-        <Grid container justifyContent={"center"}>
+        {/* <Grid container justifyContent={"center"}>
           <div className="total">
             <Typography>
               TOTAL SUPPLY: <span>1000,000,000,000</span>
             </Typography>
           </div>
-        </Grid>
-        <Grid container my={4} alignItems={"center"} spacing={4}>
-          <Grid item md={6} sm={12}>
-            <Grid container justifyContent={"center"}>
-              <Card sx={{ background: "transparent", boxShadow: "none" }}>
-                <CardMedia component={"img"} src={Pet8} height={400} />
-                {/* <CardActionArea> */}
-                <div className="contract">
-                  <Typography ml={2}>CONTRACT</Typography>
-                  <Box style={{ display: "flex" }} mr={2}>
-                    <Typography>Camd...eor</Typography>
-                    <img
-                      src={copy}
-                      alt="copy"
-                      style={{ cursor: "pointer", marginLeft: "12px" }}
-                    />
-                  </Box>
-                </div>
-                {/* </CardActionArea> */}
-              </Card>
-              {/* <Box
-                sx={{
-                  position: "flex",
-                  width: "100%",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              > */}
-              {/* <img
-                src={Pet8}
-                alt="pet"
-                // style={{ width: "fit-content" }}
-                width={400}
-              /> */}
-              {/* </Box> */}
-            </Grid>
+        </Grid> */}
+        <Grid container my={4} alignItems={"center"} spacing={6} px={4}>
+          <Grid item md={3} sm={6} xs={12}>
+            <TokenCard url={Pet8} title="TOTAL SUPPLY: 1T" />
           </Grid>
-          <Grid item md={6} sm={12}>
-            <img src={diagram} alt="diagram" />
+          <Grid item md={3} sm={6} xs={12}>
+            <TokenCard url={Pet4} title="LP: BURNED" />
+          </Grid>
+          <Grid item md={3} sm={6} xs={12}>
+            <TokenCard url={Pet5} title="MINT REVOKED" />
+          </Grid>
+          <Grid item md={3} sm={6} xs={12}>
+            <TokenCard url={Pet6} title="TAXES:0" />
           </Grid>
         </Grid>
       </SectionTemplate>

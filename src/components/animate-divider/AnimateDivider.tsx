@@ -1,14 +1,14 @@
 import { Box, styled } from "@mui/material";
 import DividerItem from "./DividerItem";
-import Pet1 from "../../assets/img/pet1.png";
-import Pet2 from "../../assets/img/pet2.png";
-import Pet3 from "../../assets/img/pet3.png";
-import Pet4 from "../../assets/img/pet4.png";
-import Pet5 from "../../assets/img/pet5.png";
-import Pet6 from "../../assets/img/pet6.png";
-import Pet7 from "../../assets/img/pet7.png";
-import Pet8 from "../../assets/img/pet8.png";
-import Pet9 from "../../assets/img/pet9.png";
+import Pet1 from "../../assets/img/pet1-1.webp";
+import Pet2 from "../../assets/img/pet2-1.webp";
+import Pet3 from "../../assets/img/pet3-1.webp";
+import Pet4 from "../../assets/img/pet4-1.webp";
+import Pet5 from "../../assets/img/pet5-1.webp";
+import Pet6 from "../../assets/img/pet6-1.webp";
+import Pet7 from "../../assets/img/pet7-1.webp";
+import Pet8 from "../../assets/img/pet8-1.webp";
+import Pet9 from "../../assets/img/pet9-1.webp";
 
 type Props = {};
 const Root = styled(Box)(() => ({

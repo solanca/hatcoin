@@ -12,14 +12,43 @@ import Disclaimer from "./sections/disclaimer";
 import { useEffect, useState } from "react";
 import Loading from "./components/LoadingBar";
 import AnimateDivider from "./components/animate-divider/AnimateDivider";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { API_ENDPOINT, BACKEND_URI } from "./constant";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
+  const [username, setUserName] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
   useEffect(() => {
-    setInterval(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
+      setOpen(true);
     }, 5000);
+    return () => clearTimeout(timer);
   }, []);
+
+  const creatUserMutation = useMutation({
+    mutationFn: (userName: string) =>
+      axios.post(`${BACKEND_URI}${API_ENDPOINT.CREATE_USER_ENDPOINT}`, {
+        username: userName,
+      }),
+  });
+
+  const { data: userInfo, refetch } = useQuery({
+    queryKey: ["getUser"],
+    queryFn: () =>
+      axios
+        .post(`${BACKEND_URI}${API_ENDPOINT.GET_USER}`, {
+          username: localStorage.getItem("username"),
+        })
+        .then((res) => res.data),
+  });
+
+  const handleUserName = (name: string) => {
+    setUserName(name);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -29,7 +58,7 @@ function App() {
           style={{ display: loading ? "none" : "block" }}
         >
           <Container maxWidth="xl" sx={{ px: "0px !important" }}>
-            <MainSection />
+            <MainSection userInfo={userInfo} />
             <AnimateDivider />
             <About />
             {/* <HowToBuy /> */}
@@ -39,8 +68,8 @@ function App() {
             <Footer />
           </Container>
           <Dialog
-            open={false}
-            // onClose={() => setOpen(false)}
+            open={open}
+            onClose={() => setOpen(false)}
             fullWidth
             maxWidth="sm"
             PaperProps={{
@@ -48,6 +77,8 @@ function App() {
                 background: "linear-gradient(to top, #7ec850 0%, #387c44 100%)",
                 boxShadow: "none",
                 position: "relative",
+                overflow: "hidden",
+                borderRadius: 16,
                 // height: 400,
               },
             }}
@@ -58,7 +89,20 @@ function App() {
               width={"100%"}
               // height={"100%"}
             />
-            <WelcomePopup />
+            <WelcomePopup
+              username={username}
+              handleUserName={handleUserName}
+              handleSubmit={() => {
+                setOpen(false);
+                if (username) {
+                  localStorage.setItem("username", username);
+                  creatUserMutation.mutate(username);
+                  refetch();
+                } else {
+                  console.log("username is required");
+                }
+              }}
+            />
           </Dialog>
         </div>
       </>

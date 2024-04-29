@@ -6,7 +6,7 @@ import {
   Typography,
   // styled,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Importing all pet images
 import Pet1 from "../../assets/img/pet1.png";
@@ -33,12 +33,14 @@ import { motion } from "framer-motion";
 // import ButtonBackground from "../../assets/button.webp";
 import SnowEffect from "../../components/showflake/SnowEffect";
 import Header from "../../components/header";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { API_ENDPOINT, BACKEND_URI } from "../../constant";
+import axios from "axios";
+import { UserResponse } from "../../types/response";
 
-type Props = {};
-interface PetStats {
-  totalPets: number;
-  totalUsers: Set<string>;
-}
+type Props = {
+  userInfo: { count: number };
+};
 
 // const PetButton = styled(Box)(() => ({
 //   background: `url(${ButtonBackground})`,
@@ -66,7 +68,7 @@ interface PetStats {
 //   },
 // }));
 
-const MainSection = (_props: Props) => {
+const MainSection = ({ userInfo }: Props) => {
   const pets = [
     [Pet1, Pet1Icon],
     [Pet2, Pet2Icon],
@@ -82,22 +84,19 @@ const MainSection = (_props: Props) => {
   const [currentPet, setCurrentPet] = useState<string>(pets[0][0]);
   const [currentPetIcon, setCurrentPetIcon] = useState<string>(pets[0][1]);
   const [showFireworks, setShowFireworks] = useState<boolean>(false);
-  const [petStats, setPetStats] = useState<PetStats>({
-    totalPets: 0,
-    totalUsers: new Set(),
-  });
+  const [petStats, setPetStats] = useState<number>(0);
   const [isVibrating, setIsVibrating] = useState(false);
   const handlePetClick = () => {
     setIsVibrating(true);
+    if (localStorage.getItem("username")) {
+      updateCountMutation.mutate(localStorage.getItem("username") || "");
+      refetch();
+    }
     // handlePetClick(); // Your existing click handler
 
     // Reset the animation
-    setPetStats((prevStats) => {
-      const newStats = { ...prevStats };
-      newStats.totalPets++;
-      newStats.totalUsers.add("user1"); // Simulating a user ID, replace with real user tracking logic
-      return newStats;
-    });
+    // console.log("pet", petStats);
+    setPetStats((pet) => pet + 1);
     const randomIndex = Math.floor(Math.random() * pets.length);
     setCurrentPet(pets[randomIndex][0]);
     setCurrentPetIcon(pets[randomIndex][1]);
@@ -119,6 +118,37 @@ const MainSection = (_props: Props) => {
       repeatType: "reverse", // Reverse the animation each cycle
     },
   };
+
+  const { data, refetch } = useQuery<UserResponse>({
+    queryKey: ["getUserInfo"],
+    queryFn: () =>
+      axios
+        .get(`${BACKEND_URI}${API_ENDPOINT.GET_INFO}`)
+        .then((res) => res.data),
+  });
+  // const { data: userInfo } = useQuery({
+  //   queryKey: ["getUser"],
+  //   queryFn: () =>
+  //     axios
+  //       .post(`${BACKEND_URI}${API_ENDPOINT.GET_USER}`, {
+  //         username: localStorage.getItem("username"),
+  //       })
+  //       .then((res) => res.data),
+  // });
+
+  useEffect(() => {
+    if (userInfo) {
+      setPetStats(userInfo.count || 0);
+    }
+  }, [userInfo]);
+
+  const updateCountMutation = useMutation({
+    mutationFn: (username: string) => {
+      return axios.post(`${BACKEND_URI}${API_ENDPOINT.UPDATE_COUNT}`, {
+        username,
+      });
+    },
+  });
 
   return (
     <div className="main-section">
@@ -159,51 +189,19 @@ const MainSection = (_props: Props) => {
             <Typography variant="h5">Pet</Typography>
           </PetButton> */}
         </Grid>
-        {/* {showFireworks && (
-          <>
-            <Firework
-              pet={currentPetIcon}
-              startX={-200}
-              startY={-300}
-              color="red"
-            />
-            <Firework
-              pet={currentPetIcon}
-              startX={150}
-              startY={-200}
-              color="green"
-            />
-            <Firework
-              pet={currentPetIcon}
-              startX={260}
-              startY={-100}
-              color="white"
-            />
-            <Firework
-              pet={currentPetIcon}
-              startX={470}
-              startY={-350}
-              color="blue"
-            />
-            <Firework
-              pet={currentPetIcon}
-              startX={750}
-              startY={-320}
-              color="yellow"
-            />
-          </>
-        )} */}
+
         <CardActions>
           <Grid container flexDirection={"column"}>
             <Typography color={"azure"} variant="h3">
-              Total Pets: {petStats.totalPets}
+              Total Pets: {petStats}
             </Typography>
             <Typography variant="h3" color={"azure"}>
-              Average Pets Per User:{" "}
-              {(petStats.totalPets / petStats.totalUsers.size).toFixed(2)}
+              Average Pets Per User:
+              {data?.average_count.average_count?.toFixed(2) || 0}
+              {/* {(petStats.totalPets / petStats.totalUsers.size).toFixed(2)} */}
             </Typography>
             <Typography color={"azure"} variant="h5">
-              Top Petter: @skips
+              Top Petter:{data?.best_counter.username}
             </Typography>
           </Grid>
         </CardActions>
