@@ -1,11 +1,21 @@
 import SectionTemplate from "../../components/section-template";
-import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardMedia,
+  Grid,
+  Typography,
+  // useMediaQuery,
+  // useTheme,
+} from "@mui/material";
 import diagram from "../../assets/diagram.svg";
 import Pet8 from "../../assets/img/pet8.png";
 import copy from "../../assets/copy.svg";
 type Props = {};
 
 const Tokenomics = (_props: Props) => {
+  // const theme = useTheme();
+  // const _isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <SectionTemplate position={true}>
@@ -54,7 +64,9 @@ const Tokenomics = (_props: Props) => {
             </Grid>
           </Grid>
           <Grid item md={6} sm={12}>
-            <img src={diagram} alt="diagram" />
+            <Grid container justifyContent={"center"}>
+              <img src={diagram} alt="diagram" width={"50%"} />
+            </Grid>
           </Grid>
         </Grid>
       </SectionTemplate>

@@ -7,7 +7,7 @@ type Props = {
 const DividerItem = ({ url }: Props) => {
   return (
     <Grid container>
-      <img src={url} alt="hat" width={60} />
+      <img src={url} alt="hat" width={50} />
       <Typography color={"azure"} fontWeight={900} variant="h5">
         $HAT
       </Typography>
