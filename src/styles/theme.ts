@@ -19,7 +19,7 @@ export const theme = createTheme({
       fontWeight: 700,
       color: "#EEDDCB",
     },
-    body1: { fontWeight: 700, color: "#EEDDCB" },
+    body1: { fontWeight: 700, color: "#EEDDCB", fontSize: 20 },
   },
   breakpoints: {
     values: {
