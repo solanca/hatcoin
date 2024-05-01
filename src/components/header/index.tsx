@@ -12,6 +12,7 @@ const Header = (_props: Props) => {
         display: "flex",
         position: "fixed",
         top: 10,
+        zIndex: 1,
         left: { md: 40, sm: 10, xs: 4 },
         right: { md: 40, sm: 10, xs: 4 },
       }}
