@@ -21,14 +21,14 @@ type Props = {
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 36,
   borderRadius: 24,
-  border: "3px solid black",
+  border: "3px solid #36180D",
   [`&.${linearProgressClasses.root}`]: {
     backgroundColor: "transparent !important",
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 24,
-    borderRight: "3px solid black",
-    backgroundColor: "#5BE1E3",
+    borderRight: "3px solid #36180D",
+    backgroundColor: "#F2EADF",
   },
   [theme.breakpoints.down("sm")]: {
     height: 20,

@@ -16,7 +16,7 @@ const Root = styled(Box)(() => ({
   borderBottom: "4px solid #D7824B",
   width: "100vw",
   overflow: "hidden",
-  background: "#121011",
+  background: "#36180D",
   //   color: "#363544",
   //   font-size: 32px;
   //   padding: 12px 0
