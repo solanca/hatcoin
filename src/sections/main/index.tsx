@@ -210,11 +210,19 @@ const MainSection = ({
               viewport={{ once: false, amount: 0.1 }}
             > */}
             <motion.img
+              drag
+              dragConstraints={{
+                top: -10,
+                left: 100,
+                right: 100,
+                bottom: 10,
+              }}
               // variants={cardVariants as any}
               // whileTap={vibrationEffect}
               animate={isVibrating ? (vibrationEffect as any) : {}}
               onClick={handlePetClick}
               whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+              whileTap={{ cursor: "grab" }}
               src={currentPet}
               style={{
                 borderRadius: "50%",
