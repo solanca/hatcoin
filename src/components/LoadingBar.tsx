@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Pet from "../assets/img/pet10.png";
+import Pet from "../assets/logo.gif";
 import Pet2 from "../assets/img/pet2.png";
 import Pet4 from "../assets/img/pet4.png";
 import Pet5 from "../assets/img/pet5.png";

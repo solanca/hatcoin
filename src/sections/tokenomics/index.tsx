@@ -15,7 +15,6 @@ const Tokenomics = (_props: Props) => {
   // const theme = useTheme();
   // const _isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-
     <>
       {/* <SectionTemplate position={true}> */}
       <Typography variant="h2">TOKENOMICS</Typography>
@@ -42,7 +41,6 @@ const Tokenomics = (_props: Props) => {
       </Grid>
       {/* </SectionTemplate> */}
     </>
-
   );
 };
 
