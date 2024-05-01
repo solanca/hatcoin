@@ -8,7 +8,6 @@ import Footer from "./sections/footer";
 import { theme } from "./styles/theme";
 import About from "./sections/about";
 import Tokenomics from "./sections/tokenomics";
-import Disclaimer from "./sections/disclaimer";
 import { useEffect, useState } from "react";
 import Loading from "./components/LoadingBar";
 // import AnimateDivider from "./components/animate-divider/AnimateDivider";
@@ -16,6 +15,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { API_ENDPOINT, BACKEND_URI } from "./constant";
 import Header from "./components/header";
+import HowToBuy from "./sections/how-to-buy";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -79,10 +79,11 @@ function App() {
               }}
             />
             <div style={{ position: "relative", background: "#7a5946" }}>
+              {/* <Anime /> */}
               <About />
-              {/* <HowToBuy /> */}
               <Tokenomics />
-              <Disclaimer />
+              <HowToBuy />
+              {/* <Disclaimer /> */}
               {/* <PetCounter /> */}
               <Footer />
             </div>

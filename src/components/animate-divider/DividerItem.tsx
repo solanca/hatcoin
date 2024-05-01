@@ -6,12 +6,14 @@ type Props = {
 
 const DividerItem = ({ url }: Props) => {
   return (
+    // <div style={{ display: "block" }}>
     <Grid container>
       <img src={url} alt="hat" width={50} />
       <Typography fontWeight={900} variant="h5">
         $HAT
       </Typography>
     </Grid>
+    // </div>
   );
 };
 
