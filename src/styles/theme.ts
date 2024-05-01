@@ -3,18 +3,23 @@ import { createTheme } from "@mui/material";
 export const theme = createTheme({
   typography: {
     fontFamily: "Hat",
+    h2: {
+      fontWeight: 800,
+      color: "#EEDDCB",
+    },
     h3: {
       fontWeight: 800,
+      color: "#EEDDCB",
     },
     h5: {
       fontWeight: 700,
-      color: "azure",
+      color: "#EEDDCB",
     },
     h4: {
       fontWeight: 700,
-      color: "azure",
+      color: "#EEDDCB",
     },
-    body1: { fontWeight: 700, color: "azure" },
+    body1: { fontWeight: 700, color: "#EEDDCB" },
   },
   breakpoints: {
     values: {

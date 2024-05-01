@@ -11,10 +11,11 @@ import Tokenomics from "./sections/tokenomics";
 import Disclaimer from "./sections/disclaimer";
 import { useEffect, useState } from "react";
 import Loading from "./components/LoadingBar";
-import AnimateDivider from "./components/animate-divider/AnimateDivider";
+// import AnimateDivider from "./components/animate-divider/AnimateDivider";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { API_ENDPOINT, BACKEND_URI } from "./constant";
+import Header from "./components/header";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -57,24 +58,43 @@ function App() {
           className="wrapper"
           style={{ display: loading ? "none" : "block" }}
         >
-          <Container maxWidth="xl" sx={{ px: "0px !important" }}>
-            <MainSection userInfo={userInfo} />
-            <AnimateDivider />
-            <About />
-            {/* <HowToBuy /> */}
-            <Tokenomics />
-            <Disclaimer />
-            {/* <PetCounter /> */}
-            <Footer />
+          <Header />
+          <Container
+            maxWidth="xl"
+            sx={{ px: "0px !important", position: "relative" }}
+          >
+            <MainSection
+              userInfo={userInfo}
+              username={username}
+              handleUserName={handleUserName}
+              handleSubmit={() => {
+                setOpen(false);
+                if (username) {
+                  localStorage.setItem("username", username);
+                  creatUserMutation.mutate(username);
+                  refetch();
+                } else {
+                  console.log("username is required");
+                }
+              }}
+            />
+            <div style={{ position: "relative", background: "#7a5946" }}>
+              <About />
+              {/* <HowToBuy /> */}
+              <Tokenomics />
+              <Disclaimer />
+              {/* <PetCounter /> */}
+              <Footer />
+            </div>
           </Container>
           <Dialog
             open={open}
             onClose={() => setOpen(false)}
             fullWidth
-            maxWidth="sm"
+            maxWidth="xs"
             PaperProps={{
               sx: {
-                background: "linear-gradient(to top, #7ec850 0%, #387c44 100%)",
+                background: "linear-gradient(to top, #84391A 0%, #36180D 100%)",
                 boxShadow: "none",
                 position: "relative",
                 overflow: "hidden",
@@ -89,20 +109,7 @@ function App() {
               width={"100%"}
               // height={"100%"}
             />
-            <WelcomePopup
-              username={username}
-              handleUserName={handleUserName}
-              handleSubmit={() => {
-                setOpen(false);
-                if (username) {
-                  localStorage.setItem("username", username);
-                  creatUserMutation.mutate(username);
-                  refetch();
-                } else {
-                  console.log("username is required");
-                }
-              }}
-            />
+            <WelcomePopup handleClose={() => setOpen(false)} />
           </Dialog>
         </div>
       </>

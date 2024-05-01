@@ -8,7 +8,9 @@ const Disclaimer = (_props: Props) => {
   return (
     <SectionTemplate position={false}>
       <Box sx={{ height: 300 }}>
+
         <Typography variant="h4">Disclaimer</Typography>
+
         <img src={Pet2} width={200} alt="pet2" />
       </Box>
     </SectionTemplate>

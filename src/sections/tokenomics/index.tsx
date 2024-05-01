@@ -1,4 +1,3 @@
-import SectionTemplate from "../../components/section-template";
 import {
   Grid,
   Typography,
@@ -18,30 +17,30 @@ const Tokenomics = (_props: Props) => {
   return (
 
     <>
-      <SectionTemplate position={true}>
-        <Typography variant="h4">TOKENOMICS</Typography>
-        {/* <Grid container justifyContent={"center"}>
+      {/* <SectionTemplate position={true}> */}
+      <Typography variant="h2">TOKENOMICS</Typography>
+      {/* <Grid container justifyContent={"center"}>
           <div className="total">
             <Typography>
               TOTAL SUPPLY: <span>1000,000,000,000</span>
             </Typography>
           </div>
         </Grid> */}
-        <Grid container my={4} alignItems={"center"} spacing={6} px={4}>
-          <Grid item md={3} sm={6} xs={12}>
-            <TokenCard url={Pet8} title="TOTAL SUPPLY: 1T" />
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <TokenCard url={Pet4} title="LP: BURNED" />
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <TokenCard url={Pet5} title="MINT REVOKED" />
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <TokenCard url={Pet6} title="TAXES:0" />
-          </Grid>
+      <Grid container my={4} alignItems={"center"} spacing={6} px={4}>
+        <Grid item md={3} sm={6} xs={12}>
+          <TokenCard url={Pet8} title="TOTAL SUPPLY: 1T" />
         </Grid>
-      </SectionTemplate>
+        <Grid item md={3} sm={6} xs={12}>
+          <TokenCard url={Pet4} title="LP: BURNED" />
+        </Grid>
+        <Grid item md={3} sm={6} xs={12}>
+          <TokenCard url={Pet5} title="MINT REVOKED" />
+        </Grid>
+        <Grid item md={3} sm={6} xs={12}>
+          <TokenCard url={Pet6} title="TAXES:0" />
+        </Grid>
+      </Grid>
+      {/* </SectionTemplate> */}
     </>
 
   );

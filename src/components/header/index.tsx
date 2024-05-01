@@ -10,8 +10,9 @@ const Header = (_props: Props) => {
     <Box
       sx={{
         display: "flex",
-        position: "absolute",
+        position: "fixed",
         top: 10,
+        zIndex: 1,
         left: { md: 40, sm: 10, xs: 4 },
         right: { md: 40, sm: 10, xs: 4 },
       }}
@@ -30,10 +31,15 @@ const Header = (_props: Props) => {
       <Box flexGrow={1} />
       <Box>
         <IconButton>
-          <TelegramIcon />
+          <TelegramIcon sx={{ color: "pink" }} />
         </IconButton>
-        <IconButton sx={{ ml: 4 }}>
-          <XIcon />
+        <IconButton
+          component="a"
+          href="https://twitter.com/beanie"
+          target="_blank"
+          sx={{ ml: 4 }}
+        >
+          <XIcon sx={{ color: "pink" }} />
         </IconButton>
       </Box>
     </Box>

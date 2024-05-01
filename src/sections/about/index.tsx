@@ -1,6 +1,6 @@
 import SectionTemplate from "../../components/section-template";
 import { Box } from "@mui/material";
-import Pet1 from "../../assets/img/pet1.png";
+import Pet1 from "../../assets/logo.gif";
 import About1 from "../../assets/about1.webp";
 type Props = {};
 

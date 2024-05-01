@@ -4,7 +4,7 @@ const Snowflake = ({ style, duration, delay, pet, rotate }: any) => {
   const animation: AnimationProps = {
     initial: { y: -600, opacity: 1 },
     animate: {
-      y: [null, window.innerHeight + 200],
+      y: [null, window.innerHeight + 800],
       opacity: 1,
       rotate: rotate,
     },
