@@ -8,12 +8,7 @@
 body {
   min-height: 100vh;
   font-family: "Bubblegum";
-  background: linear-gradient(
-    90deg,
-    rgba(40, 145, 61, 1) 0%,
-    rgba(35, 192, 61, 1) 53%,
-    rgba(40, 145, 61, 1) 100%
-  );
+  background: #7a5946;
   /* background: linear-gradient(0deg, rgb(40, 148, 62) 0%, rgb(40, 148, 62) 100%); */
 }
 
@@ -55,11 +50,11 @@ body {
 
 .main-section {
   background: /*linear-gradient(#468ff0, rgba(39, 131, 236, 0.1) 10%),
-    linear-gradient(180deg, rgba(50, 165, 75, 0) 75%, #588f00),*/ url(./assets/img/background.jpg);
+    linear-gradient(180deg, rgba(50, 165, 75, 0) 75%, #588f00),*/ url(./assets/back.webp);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: bottom center;
-  height: 80vh;
+  background-position: center center;
+  height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -145,6 +140,13 @@ body {
 }
 
 .username {
-  border-radius: 12px;
-  height: 30px;
+  border-radius: 32px;
+  height: 50px;
+  width: 260px;
+  font-family: Hat;
+  padding: 10px 20px;
+  color: #36180d;
+  background-color: #eee6e2;
+  font-size: 40px;
+  margin-right: 10px;
 }

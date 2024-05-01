@@ -12,11 +12,11 @@ import Pet9 from "../../assets/img/pet9-1.webp";
 
 type Props = {};
 const Root = styled(Box)(() => ({
-  borderTop: "4px solid black",
-  borderBottom: "4px solid black",
+  borderTop: "4px solid #D7824B",
+  borderBottom: "4px solid #D7824B",
   width: "100vw",
   overflow: "hidden",
-  background: "#000B33",
+  background: "#121011",
   //   color: "#363544",
   //   font-size: 32px;
   //   padding: 12px 0

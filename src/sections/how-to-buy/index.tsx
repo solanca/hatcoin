@@ -8,7 +8,7 @@ const HowToBuy = (_props: Props) => {
   return (
     <SectionTemplate position={false}>
       <Box sx={{ height: 300 }}>
-        <Typography variant="h4">How to buy / CA</Typography>
+        <Typography variant="h2">How to buy / CA</Typography>
         <img src={Pet3} width={200} alt="pet2" />
       </Box>
     </SectionTemplate>

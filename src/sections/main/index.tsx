@@ -37,9 +37,14 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { API_ENDPOINT, BACKEND_URI } from "../../constant";
 import axios from "axios";
 import { UserResponse } from "../../types/response";
+import AnimateDivider from "../../components/animate-divider/AnimateDivider";
+import { PetButton } from "../../components/welcome-popup";
 
 type Props = {
   userInfo: { count: number };
+  username: string;
+  handleUserName: (e: any) => void;
+  handleSubmit: () => void;
 };
 
 // const PetButton = styled(Box)(() => ({
@@ -68,7 +73,12 @@ type Props = {
 //   },
 // }));
 
-const MainSection = ({ userInfo }: Props) => {
+const MainSection = ({
+  userInfo,
+  username,
+  handleUserName,
+  handleSubmit,
+}: Props) => {
   const pets = [
     [Pet1, Pet1Icon],
     [Pet2, Pet2Icon],
@@ -151,9 +161,20 @@ const MainSection = ({ userInfo }: Props) => {
   });
 
   return (
-    <div className="main-section">
-      {showFireworks && <SnowEffect pet={currentPetIcon} />}
-      <Header />
+    <>
+      <div className="main-section">
+        {showFireworks && <SnowEffect pet={currentPetIcon} />}
+        <Header />
+
+        {/* <SnowEffect /> */}
+      </div>
+      <AnimateDivider />
+      <Grid container justifyContent={"center"} mt={4}>
+        <Grid item>
+          <Typography variant="h2">Petting</Typography>
+        </Grid>
+      </Grid>
+
       <Card
         sx={{
           p: 4,
@@ -173,11 +194,12 @@ const MainSection = ({ userInfo }: Props) => {
             // whileTap={vibrationEffect}
             animate={isVibrating ? (vibrationEffect as any) : {}}
             onClick={handlePetClick}
-            whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
+            whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
             src={currentPet}
             style={{
               borderRadius: "50%",
               cursor: "pointer",
+              border: "10px solid #36180D",
               background:
                 "linear-gradient(90deg, rgba(145,78,249,1) 0%, rgba(80,163,197,1) 53%, rgba(21,240,148,1) 100%)",
             }}
@@ -189,25 +211,43 @@ const MainSection = ({ userInfo }: Props) => {
             <Typography variant="h5">Pet</Typography>
           </PetButton> */}
         </Grid>
-
+        <Grid container justifyContent={"center"} alignItems={"center"} mt={4}>
+          {localStorage.getItem("username") ? (
+            <Typography variant="h3">
+              {" "}
+              Welcome {localStorage.getItem("username")}
+            </Typography>
+          ) : (
+            <>
+              <input
+                className="username"
+                placeholder="Username"
+                aria-label="username"
+                style={{ zIndex: 1000 }}
+                value={username}
+                onChange={(e: any) => handleUserName(e.target.value)}
+              />
+              <PetButton onClick={handleSubmit}>Submit</PetButton>
+            </>
+          )}
+        </Grid>
         <CardActions>
           <Grid container flexDirection={"column"}>
-            <Typography color={"azure"} variant="h3">
+            <Typography variant="h4" mt={2}>
               Total Pets: {petStats}
             </Typography>
-            <Typography variant="h3" color={"azure"}>
+            <Typography variant="h4">
               Average Pets Per User:
               {data?.average_count.average_count?.toFixed(2) || 0}
               {/* {(petStats.totalPets / petStats.totalUsers.size).toFixed(2)} */}
             </Typography>
-            <Typography color={"azure"} variant="h5">
-              Top Petter:{data?.best_counter.username}
+            <Typography variant="h5" mt={1}>
+              Top Petter: {data?.best_counter.username}
             </Typography>
           </Grid>
         </CardActions>
       </Card>
-      {/* <SnowEffect /> */}
-    </div>
+    </>
   );
 };
 

@@ -18,7 +18,7 @@ const Tokenomics = (_props: Props) => {
   return (
     <>
       <SectionTemplate position={true}>
-        <Typography variant="h4">TOKENOMICS</Typography>
+        <Typography variant="h2">TOKENOMICS</Typography>
         {/* <Grid container justifyContent={"center"}>
           <div className="total">
             <Typography>
