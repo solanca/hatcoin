@@ -1,4 +1,5 @@
 import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 
 type Props = {
   url: string;
@@ -6,6 +7,22 @@ type Props = {
 };
 
 const TokenCard = ({ url, title }: Props) => {
+  const cardVariants = () => ({
+    offscreen: {
+      y: 400,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      // rotate: -10,
+      transition: {
+        type: "spring",
+        bounce: 0.2,
+        duration: 3,
+      },
+    },
+  });
   return (
     <Card
       sx={{
@@ -15,7 +32,15 @@ const TokenCard = ({ url, title }: Props) => {
         width: "100%",
       }}
     >
-      <CardMedia component={"img"} src={url} height={400} />
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: false, amount: 0.1 }}
+      >
+        <motion.div variants={cardVariants()} style={{ overflowY: "hidden" }}>
+          <CardMedia component={"img"} src={url} height={400} />
+        </motion.div>
+      </motion.div>
       <CardActionArea>
         <div className="contract">
           <Typography ml={2} variant="h5">

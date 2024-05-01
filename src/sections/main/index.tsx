@@ -32,7 +32,6 @@ import Pet10Icon from "../../assets/img/pet10.webp";
 import { motion } from "framer-motion";
 // import ButtonBackground from "../../assets/button.webp";
 import SnowEffect from "../../components/showflake/SnowEffect";
-import Header from "../../components/header";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { API_ENDPOINT, BACKEND_URI } from "../../constant";
 import axios from "axios";
@@ -160,93 +159,121 @@ const MainSection = ({
     },
   });
 
+  // const cardVariants = {
+  //   offscreen: {
+  //     x: 300,
+  //     opacity: 1,
+  //   },
+  //   onscreen: {
+  //     scale: [1, 0.9, 1.1, 1], // Quickly change scale to simulate a shake
+  //     rotate: [0, -2, 2, 0], // Slight rotations
+  //     transition: {
+  //       duration: 0.2, // Short duration for a quick shake
+  //       repeat: 1, // Repeat the sequence for a continuous effect
+  //       repeatType: "reverse", // Reverse the animation each cycle
+  //       // scale: [1, 0.9, 1.1, 1], // Quickly change scale to simulate a shake
+  //       // rotate: [0, -2, 2, 0], // Slight rotations
+  //     },
+  //   },
+  // };
   return (
     <>
-      <div className="main-section">
+      <div className="main-section">{/* <SnowEffect /> */}</div>
+      <div style={{ position: "relative", height: "100vh" }}></div>
+      <div style={{ position: "relative", background: "#7a5946" }}>
         {showFireworks && <SnowEffect pet={currentPetIcon} />}
-        <Header />
-
-        {/* <SnowEffect /> */}
-      </div>
-      <AnimateDivider />
-      <Grid container justifyContent={"center"} mt={4}>
-        <Grid item>
-          <Typography variant="h2">Petting</Typography>
+        <AnimateDivider />
+        <Grid container justifyContent={"center"} mt={4}>
+          <Grid item>
+            <Typography variant="h2">Petting</Typography>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Card
-        sx={{
-          p: 4,
-          borderRadius: 4,
-          background: "transparent",
-          boxShadow: "none",
-        }}
-      >
-        {/* <ButtonWithSprinkles /> */}
-        <Grid
-          container
-          justifyContent={"center"}
-          alignItems={"center"}
-          flexDirection={"column"}
+        <Card
+          sx={{
+            p: 4,
+            borderRadius: 4,
+            background: "transparent",
+            boxShadow: "none",
+          }}
         >
-          <motion.img
-            // whileTap={vibrationEffect}
-            animate={isVibrating ? (vibrationEffect as any) : {}}
-            onClick={handlePetClick}
-            whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
-            src={currentPet}
-            style={{
-              borderRadius: "50%",
-              cursor: "pointer",
-              border: "10px solid #36180D",
-              background:
-                "linear-gradient(90deg, rgba(145,78,249,1) 0%, rgba(80,163,197,1) 53%, rgba(21,240,148,1) 100%)",
-            }}
-            alt="Pet"
-            width={300}
-            height={300}
-          />
-          {/* <PetButton onClick={handlePetClick}>
+          {/* <ButtonWithSprinkles /> */}
+          <Grid
+            container
+            justifyContent={"center"}
+            alignItems={"center"}
+            flexDirection={"column"}
+          >
+            {/* <motion.div
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: false, amount: 0.1 }}
+            > */}
+            <motion.img
+              // variants={cardVariants as any}
+              // whileTap={vibrationEffect}
+              animate={isVibrating ? (vibrationEffect as any) : {}}
+              onClick={handlePetClick}
+              whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+              src={currentPet}
+              style={{
+                borderRadius: "50%",
+                cursor: "pointer",
+                border: "10px solid #36180D",
+                background:
+                  "linear-gradient(90deg, rgba(145,78,249,1) 0%, rgba(80,163,197,1) 53%, rgba(21,240,148,1) 100%)",
+              }}
+              alt="Pet"
+              width={300}
+              height={300}
+            />
+            {/* </motion.div> */}
+            {/* <PetButton onClick={handlePetClick}>
             <Typography variant="h5">Pet</Typography>
           </PetButton> */}
-        </Grid>
-        <Grid container justifyContent={"center"} alignItems={"center"} mt={4}>
-          {localStorage.getItem("username") ? (
-            <Typography variant="h3">
-              {" "}
-              Welcome {localStorage.getItem("username")}
-            </Typography>
-          ) : (
-            <>
-              <input
-                className="username"
-                placeholder="Username"
-                aria-label="username"
-                style={{ zIndex: 1000 }}
-                value={username}
-                onChange={(e: any) => handleUserName(e.target.value)}
-              />
-              <PetButton onClick={handleSubmit}>Submit</PetButton>
-            </>
-          )}
-        </Grid>
-        <CardActions>
-          <Grid container flexDirection={"column"}>
-            <Typography variant="h4" mt={2}>
-              Total Pets: {petStats}
-            </Typography>
-            <Typography variant="h4">
-              Average Pets Per User:
-              {data?.average_count.average_count?.toFixed(2) || 0}
-              {/* {(petStats.totalPets / petStats.totalUsers.size).toFixed(2)} */}
-            </Typography>
-            <Typography variant="h5" mt={1}>
-              Top Petter: {data?.best_counter.username}
-            </Typography>
           </Grid>
-        </CardActions>
-      </Card>
+          <Grid
+            container
+            justifyContent={"center"}
+            alignItems={"center"}
+            mt={4}
+          >
+            {localStorage.getItem("username") ? (
+              <Typography variant="h3">
+                {" "}
+                Welcome {localStorage.getItem("username")}
+              </Typography>
+            ) : (
+              <>
+                <input
+                  className="username"
+                  placeholder="Username"
+                  aria-label="username"
+                  style={{ zIndex: 1000 }}
+                  value={username}
+                  onChange={(e: any) => handleUserName(e.target.value)}
+                />
+                <PetButton onClick={handleSubmit}>Submit</PetButton>
+              </>
+            )}
+          </Grid>
+          <CardActions>
+            <Grid container flexDirection={"column"}>
+              <Typography variant="h4" mt={2}>
+                Total Pets: {petStats}
+              </Typography>
+              <Typography variant="h4">
+                Average Pets Per User:
+                {data?.average_count.average_count?.toFixed(2) || 0}
+                {/* {(petStats.totalPets / petStats.totalUsers.size).toFixed(2)} */}
+              </Typography>
+              <Typography variant="h5" mt={1}>
+                Top Petter: {data?.best_counter.username}
+              </Typography>
+            </Grid>
+          </CardActions>
+        </Card>
+      </div>
     </>
   );
 };

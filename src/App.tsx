@@ -15,6 +15,7 @@ import Loading from "./components/LoadingBar";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { API_ENDPOINT, BACKEND_URI } from "./constant";
+import Header from "./components/header";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -57,7 +58,11 @@ function App() {
           className="wrapper"
           style={{ display: loading ? "none" : "block" }}
         >
-          <Container maxWidth="xl" sx={{ px: "0px !important" }}>
+          <Header />
+          <Container
+            maxWidth="xl"
+            sx={{ px: "0px !important", position: "relative" }}
+          >
             <MainSection
               userInfo={userInfo}
               username={username}
@@ -73,12 +78,14 @@ function App() {
                 }
               }}
             />
-            <About />
-            {/* <HowToBuy /> */}
-            <Tokenomics />
-            <Disclaimer />
-            {/* <PetCounter /> */}
-            <Footer />
+            <div style={{ position: "relative", background: "#7a5946" }}>
+              <About />
+              {/* <HowToBuy /> */}
+              <Tokenomics />
+              <Disclaimer />
+              {/* <PetCounter /> */}
+              <Footer />
+            </div>
           </Container>
           <Dialog
             open={open}

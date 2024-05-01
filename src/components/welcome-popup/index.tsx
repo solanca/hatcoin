@@ -69,8 +69,8 @@ const WelcomePopup = ({ handleClose }: Props) => {
       />
       {/* <Root> */}
       <Grid container justifyContent={"center"} alignItems={"center"}>
-        <Typography mt={4} textAlign={"center"} color={"azure"} variant="h4">
-          Welcome to $HAT from $WFH
+        <Typography mt={4} textAlign={"center"} color={"azure"} variant="h3">
+          Welcome to $HAT
         </Typography>
       </Grid>
       <CardContent sx={{ height: { md: 300, sm: 200, xs: 250 } }}>
