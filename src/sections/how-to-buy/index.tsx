@@ -35,7 +35,7 @@ const HowToBuy = (_props: Props) => {
       </Grid>
       <Grid container justifyContent={"center"} mt={12} mb={8}>
         <Box
-          width={{ md: 1000, sm: 600, xs: 360 }}
+          width={{ md: 1000, sm: "80%", xs: "90%" }}
           sx={{
             background: "#A87463",
             position: "relative",
@@ -64,7 +64,7 @@ const HowToBuy = (_props: Props) => {
               <Typography variant="h5">Step 4</Typography>
             </StepButton>
           </Grid>
-          <Grid container p={{ md: 4, sm: 4, xs: 2 }}>
+          <Grid container p={{ md: 4, sm: 4, xs: 4 }} spacing={4}>
             {step === 0 && (
               <>
                 <Grid item md={5} sm={12}>
@@ -72,7 +72,7 @@ const HowToBuy = (_props: Props) => {
                     src={Meme1}
                     alt="wallet"
                     width={"100%"}
-                    height={400}
+                    height={"100%"}
                     style={{ borderRadius: 8 }}
                   />
                 </Grid>
@@ -107,7 +107,7 @@ const HowToBuy = (_props: Props) => {
                     src={Meme2}
                     alt="wallet"
                     width={"100%"}
-                    height={400}
+                    height={"100%"}
                     style={{ borderRadius: 8 }}
                   />
                 </Grid>
@@ -142,7 +142,7 @@ const HowToBuy = (_props: Props) => {
                     src={Meme3}
                     alt="wallet"
                     width={"100%"}
-                    height={400}
+                    height={"100%"}
                     style={{ borderRadius: 8 }}
                   />
                 </Grid>
@@ -177,7 +177,7 @@ const HowToBuy = (_props: Props) => {
                     src={Meme4}
                     alt="wallet"
                     width={"100%"}
-                    height={400}
+                    height={"100%"}
                     style={{ borderRadius: 8 }}
                   />
                 </Grid>
