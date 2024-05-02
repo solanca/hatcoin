@@ -180,7 +180,13 @@ const MainSection = ({
     <>
       <div className="main-section">{/* <SnowEffect /> */}</div>
       <div style={{ position: "relative", height: "100vh" }}></div>
-      <div style={{ position: "relative", background: "#7a5946" }}>
+      <div
+        style={{
+          position: "relative",
+          background: "rgba(122,89,70,0.9)",
+          backdropFilter: "blur(10px)",
+        }}
+      >
         {showFireworks && <SnowEffect pet={currentPetIcon} />}
         <AnimateDivider />
         <Grid container justifyContent={"center"} mt={4}>

@@ -78,7 +78,14 @@ function App() {
                 }
               }}
             />
-            <div style={{ position: "relative", background: "#7a5946" }}>
+            <div
+              style={{
+                position: "relative",
+                background: "rgba(122,89,70,0.9)",
+                backdropFilter: "blur(10px)",
+                // opacity: 0.5,
+              }}
+            >
               {/* <Anime /> */}
               <About />
               <Tokenomics />
