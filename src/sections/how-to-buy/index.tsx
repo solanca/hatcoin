@@ -19,7 +19,7 @@ const StepButton = styled(Box)(
     alignItems: "center",
     borderRadius: "8px 8px 0px 0px",
     [theme.breakpoints.down("sm")]: {
-      width: 90,
+      width: 70,
       height: 50,
     },
   })
@@ -52,16 +52,16 @@ const HowToBuy = (_props: Props) => {
             }}
           >
             <StepButton step={0} currentStep={step} onClick={() => setStep(0)}>
-              <Typography variant="h5">Step 1</Typography>
+              <Typography variant={"h6"}>Step 1</Typography>
             </StepButton>
             <StepButton step={1} currentStep={step} onClick={() => setStep(1)}>
-              <Typography variant="h5">Step 2</Typography>
+              <Typography variant="h6">Step 2</Typography>
             </StepButton>
             <StepButton step={2} currentStep={step} onClick={() => setStep(2)}>
-              <Typography variant="h5">Step 3</Typography>
+              <Typography variant="h6">Step 3</Typography>
             </StepButton>
             <StepButton step={3} currentStep={step} onClick={() => setStep(3)}>
-              <Typography variant="h5">Step 4</Typography>
+              <Typography variant="h6">Step 4</Typography>
             </StepButton>
           </Grid>
           <Grid container p={{ md: 4, sm: 4, xs: 4 }} spacing={4}>

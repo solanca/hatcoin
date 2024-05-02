@@ -3,7 +3,6 @@ import "./App.css";
 import MainSection from "./sections/main";
 // import { useState } from "react";
 import WelcomePopup from "./components/welcome-popup";
-import WelcomeGif from "./assets/gif/welcome.gif";
 import Footer from "./sections/footer";
 import { theme } from "./styles/theme";
 import About from "./sections/about";
@@ -16,6 +15,8 @@ import axios from "axios";
 import { API_ENDPOINT, BACKEND_URI } from "./constant";
 import Header from "./components/header";
 import HowToBuy from "./sections/how-to-buy";
+import welcome from "./assets/welcome-1.gif";
+import logo from "./assets/logo.gif";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -99,22 +100,29 @@ function App() {
             open={open}
             onClose={() => setOpen(false)}
             fullWidth
-            maxWidth="xs"
+            maxWidth="sm"
             PaperProps={{
               sx: {
-                background: "linear-gradient(to top, #84391A 0%, #36180D 100%)",
+                background: "transparent",
                 boxShadow: "none",
                 position: "relative",
                 overflow: "hidden",
-                borderRadius: 16,
+                borderRadius: 8,
+                backdropFilter: "blur(12px)",
                 // height: 400,
               },
             }}
           >
             <img
-              src={WelcomeGif}
-              style={{ position: "absolute", bottom: 0 }}
-              width={"100%"}
+              src={welcome}
+              style={{ position: "absolute", bottom: 0, right: 0 }}
+              width={"50%"}
+              // height={"100%"}
+            />
+            <img
+              src={logo}
+              style={{ position: "absolute", bottom: 0, left: -10 }}
+              width={"20%"}
               // height={"100%"}
             />
             <WelcomePopup handleClose={() => setOpen(false)} />

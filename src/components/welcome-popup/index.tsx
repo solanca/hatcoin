@@ -4,6 +4,7 @@ import { styled } from "@mui/material";
 import BackBtn from "../../assets/button.webp";
 import Pet5 from "../../assets/img/pet4.png";
 import { motion } from "framer-motion";
+import banner from "../../assets/banner.png";
 
 export const PetButton = styled(Box)(() => ({
   background: `url(${BackBtn})`,
@@ -67,13 +68,14 @@ const WelcomePopup = ({ handleClose }: Props) => {
           repeat: Infinity,
         }}
       />
+      <img src={banner} alt="welcome" width={"100%"} />
       {/* <Root> */}
       <Grid container justifyContent={"center"} alignItems={"center"}>
         <Typography mt={4} textAlign={"center"} color={"azure"} variant="h3">
           Welcome to $HAT
         </Typography>
       </Grid>
-      <CardContent sx={{ height: { md: 300, sm: 200, xs: 250 } }}>
+      <CardContent sx={{ height: { md: 200, sm: 200, xs: 200 } }}>
         <Grid
           container
           justifyContent={"center"}
