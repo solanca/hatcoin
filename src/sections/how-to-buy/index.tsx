@@ -33,7 +33,7 @@ const HowToBuy = (_props: Props) => {
       <Grid container justifyContent={"center"}>
         <Typography variant="h2">How to buy / CA</Typography>
       </Grid>
-      <Grid container justifyContent={"center"} mt={12}>
+      <Grid container justifyContent={"center"} mt={12} mb={8}>
         <Box
           width={{ md: 1000, sm: 600, xs: 360 }}
           sx={{
